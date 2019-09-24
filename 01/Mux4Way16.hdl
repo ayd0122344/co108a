@@ -42,5 +42,5 @@ CHIP Mux4Way16 {
     //後來想想Mux16好像只有兩個輸入:
     //Mux16(a=a[0],b=b[0],,sel=sel,out=muxab0);
     //Mux16(c=c[0],d=d[0],sel=sel,out=muxcd0);
-    //Mux16(c=muxab0,d=muxcd0,sel=sel,out=out[0]);
+    //Mux16(c=muxab0,d=muxcd0,sel=sel,out=out[0]);...[15]
 }
