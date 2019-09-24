@@ -1,3 +1,6 @@
 ![](https://github.com/ayd0122344/co108a/blob/master/01/S__17244165.jpg)
 ![](https://github.com/ayd0122344/co108a/blob/master/01/S__17244166.jpg)
 ![](https://github.com/ayd0122344/co108a/blob/master/01/S__17244167.jpg)
+![](https://github.com/ayd0122344/co108a/blob/master/01/DMux4Way.jpg)
+![](https://github.com/ayd0122344/co108a/blob/master/01/DMux8Way-1.jpg)
+![](https://github.com/ayd0122344/co108a/blob/master/01/DMux8Way-2.jpg)
