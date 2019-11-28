@@ -40,4 +40,51 @@ CHIP CPU {
 
     PARTS:
     // Put your code here:
+    //使用Or16重新命名instruction的所有線路
+    Or16(a=false,b=instruction,out[15]=isC,out[14]=true,out[13]=true,out[12]=aa,out[11]=c1,out[10]=c2,out[9]=c3,out[8]=c4,out[7]=c5,out[6]=c6,out[5]=d1,out[4]=d2,out[3]=d3,out[2]=j1,out[1]=j2,out[0]=j3);
+
+    //空格c1
+    Mux16(a=instruction,b=aluout,sel=isC,out=CorA);
+
+    //A暫存
+    //空格c2
+    Not(in=isC,out=isA);
+    And(a=isC,b=d1,out=andisCd1);
+    Or(a=isA,b=andisCd1,out=cc2);
+    ARegister(in=CorA,load=cc2,out=Areg,out[0..14]=addressM);
+
+    //空格c3
+    //用來選擇從A或從M做運算
+    Mux16(a=Areg,b=inM,sel=aa,out=muxAM);
+
+    //空格c4
+    //1.因為zr是"=",ng是"<",需要用ng,zr做出大於(PO=ng'&zr',ng'代表大於,zr'代表">"或"<")
+    Not(in=ng,out=notng);
+    Not(in=zr,out=notzr);
+    And(a=notng,b=notzr,out=PO);
+
+    //2.有j1=ng或j2=zr或j3=PO任一情況就可以跳了
+    And(a=j1,b=ng,out=out1);
+    And(a=j2,b=zr,out=out2);
+    And(a=j3,b=PO,out=out3);
+    Or(a=out1,b=out2,out=out4);
+    Or(a=out3,b=out4,out=jnj);
+
+    //如果會影響到A暫存器跟D暫存器,就一定要用isC過濾
+    And(a=isC, b=jnj, out=PCload);
+    PC(in=Areg,load=PCload,inc=true,reset=reset,out[0..14]=pc);
+
+    //空格c5,c8
+    ALU(x=Dreg,y=muxAM,zx=c1,nx=c2,zy=c3,ny=c4,f=c5,no=c6,out=aluout,out=outM,zr=zr,ng=ng);
+
+
+    //空格c6
+    And(a=isC,b=d2,out=Dload);
+    DRegister(in=aluout,load=Dload,out=Dreg);
+
+
+    //空格c7--writeM
+    And(a=isC,b=d3,out=writeM);
+
+
 }
