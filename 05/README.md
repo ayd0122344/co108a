@@ -29,3 +29,9 @@ load為0 → "不"寫入 ; load為1 → 寫入!
 為求在「RAM16K 寫入」: 需要用 [14]' & load 才可寫出「寫入RAM16K」的控制線。當此控制線為1時,即可寫入RAM16K!
 
 ------------其餘Memory資訊請參考程式內註解------------
+
+3.Computer
+
+依下圖結構將電路以程式完成就好囉!
+
+![](https://github.com/ayd0122344/co108a/blob/master/05/computer.jpg)
