@@ -29,12 +29,15 @@ CHIP Memory {
     PARTS:
     // Put your code here:
     Not(in=address[14],out=n14);
-    
+    And(a=n14,b=load,out=Rload);
+    And(a=address[14],b=load,out=Sload);
 
-    RAM16K(in=,load=load,address=address[0..13],out=ram);
-    Screen(in=,load=load=address=address[0..13],out=scr);
-    Keyboard(in=,out=);
+    RAM16K(in=in,load=Rload,address=address[0..13],out=ram);
+    Screen(in=in,load=Sload,address=address[0..12],out=scr);
+    Keyboard(out=kout);
 
-    Mux16(a=ram,b=scr,sel=load,out=rs);
-    Mux16(a=rs,b=key,sel=load,out=out);
+    Mux16(a=ram,b=sk,sel=address[14],out=out);
+    //先選是RAM16K或是螢幕鍵盤
+    Mux16(a=scr,b=kout,sel=address[13],out=sk);
+    //再選選螢幕或鍵盤
 }
