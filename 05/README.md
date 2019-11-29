@@ -1,5 +1,7 @@
 1.CPU
 
+◎C編號對照表
+
 ![](https://github.com/ayd0122344/co108a/blob/master/05/C%E7%9A%84%E5%88%86%E5%B8%83%E5%9C%96.jpg)
 
 ◎ng→在ALU用來判斷最左邊位元是否為1, 是則為負數(∵二進制),在CPU中功用相當於"<"。(∵若x-y<0 → x<y)
