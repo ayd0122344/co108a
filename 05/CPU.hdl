@@ -40,6 +40,8 @@ CHIP CPU {
 
     PARTS:
     // Put your code here:
+    //空格c可參照README.md
+    
     //使用Or16重新命名instruction的所有線路
     Or16(a=false,b=instruction,out[15]=isC,out[14]=true,out[13]=true,out[12]=aa,out[11]=c1,out[10]=c2,out[9]=c3,out[8]=c4,out[7]=c5,out[6]=c6,out[5]=d1,out[4]=d2,out[3]=d3,out[2]=j1,out[1]=j2,out[0]=j3);
 
