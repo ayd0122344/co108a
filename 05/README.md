@@ -10,10 +10,20 @@
 
 ◎PO=ng'&zr'---------ng'(小於的相反)相當於 大於 , zr'(等於的相反)相當於大於 或 小於。
 
-------------其餘CPU資訊請參考程式註解------------
+------------其餘CPU資訊請參考程式內註解------------
 
 
 
 2.Memory
 
 ![](https://github.com/ayd0122344/co108a/blob/master/05/Memory.jpg)
+
+![](https://github.com/ayd0122344/co108a/blob/master/05/Memorybit.jpg)
+
+◎易混淆概念:
+
+[14]為0 → 是RAM16K ; [14]為1 → "不"是RAM16K!
+
+load為0 → "不"寫入 ; load為1 → 寫入!
+
+為求在「RAM16K 寫入」: 需要用 [14]' & load 才可寫出「寫入RAM16K」的控制線。當此控制線為1時,即可寫入RAM16K!
