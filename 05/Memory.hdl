@@ -33,11 +33,18 @@ CHIP Memory {
     And(a=address[14],b=load,out=Sload);
 
     RAM16K(in=in,load=Rload,address=address[0..13],out=ram);
+    //RAM16K能決定的位址[0..13],[14]必0
     Screen(in=in,load=Sload,address=address[0..12],out=scr);
+    //Screen能決定的位址[0..12],[14]必1,[13]必0
     Keyboard(out=kout);
+    //Keyboard不能寫入,只能輸出=>沒有in線,只有out線
+
+
+    //先選是RAM16K或是螢幕鍵盤,再選螢幕或是鍵盤
 
     Mux16(a=ram,b=sk,sel=address[14],out=out);
-    //先選是RAM16K或是螢幕鍵盤
+    //在此決定[14]為0時RAM16K,為1時Screen或Keyboard
     Mux16(a=scr,b=kout,sel=address[13],out=sk);
-    //再選選螢幕或鍵盤
+    //在此決定[13]為0時Screen,為1時Keyboard
+    
 }
